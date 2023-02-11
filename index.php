@@ -7,14 +7,12 @@
     <title>Proyecto de OAW</title>
 </head>
 <body>
-<script src="funciones.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <form method="post" action="">
-        <input type="text" id="feedurl" placeholder="Escribe una URL del FEED" >
-       <button type="button" onclick="agregarURL()">Agregar</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <form method="get" name="form" id="URLform">
+        <input type="text" id="feedurl" name="feedurl" placeholder="Escribe una URL del FEED" onclick="this.select()" required >
+       <input type="submit" value="Agregar" id="btnSubmit" name="btnSubmit"/>
        <button type="button" onclick="editarSitios()" >Editar</button>
     </form>
-
+    <script src="funciones.js"></script>
 </body>
 </html>
