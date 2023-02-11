@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_WARNING ^ E_ALL ^ E_NOTICE);
-include("backend/variables.php");
+include("../backend/variables.php");
 
 ?>
 
@@ -15,7 +15,7 @@ include("backend/variables.php");
 </head>
 
 <body>
-    <script src="funciones.js"></script>
+ 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <table id="tablaURL" class="table">
         <thead class="thead-dark">
@@ -46,7 +46,7 @@ include("backend/variables.php");
                 }
             }
             ?>
-
+   <script src="../scripts/funciones.js"></script>
         </tbody>
     </table>
 

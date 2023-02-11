@@ -13,6 +13,6 @@
        <input type="submit" value="Agregar" id="btnSubmit" name="btnSubmit"/>
        <button type="button" onclick="editarSitios()" >Editar</button>
     </form>
-    <script src="funciones.js"></script>
+    <script src="scripts/funciones.js"></script>
 </body>
 </html>

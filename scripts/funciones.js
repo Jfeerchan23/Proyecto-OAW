@@ -1,7 +1,7 @@
 
 const sitios = ['🍅', '🍄', '🥦', '🥒', '🌽', '🥕', '🥑'];
 function editarSitios(){
-    ventana = window.open("tablaSitios.php","ventana", "width=350,height=250");
+    ventana = window.open("pags/tablaSitios.php","ventana", "width=350,height=250");
 }
 function agregarURL(){
    const sitio = document.getElementById("feedurl").value;
