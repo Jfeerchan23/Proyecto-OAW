@@ -60,3 +60,4 @@ form.addEventListener("submit", (e) => {
     }
     httpRequest.send(variable1+"=" + valor1);
 }
+
