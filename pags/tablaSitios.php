@@ -46,7 +46,7 @@ include("../backend/variables.php");
                 }
             }
             ?>
-   <script src="../scripts/funciones.js"></script>
+   <script src="../scripts/tablaSitios.js"></script>
         </tbody>
     </table>
 
