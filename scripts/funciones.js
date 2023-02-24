@@ -54,9 +54,9 @@ let form = document.getElementById("URLform");
 form.addEventListener("submit", (e) => {
   var feedURL = form.feedurl;
   var metodo = form.method;
-  var url = "backend/xx.php";
+  var url = "backend/xxx.php";
 
-  ajax(metodo, url, "resultado", feedURL.value);
+  ajax(metodo, url, "feedurl", feedURL.value);
 });
 
 function ajax(metodo, url, variable1, valor1) {
@@ -69,7 +69,7 @@ function ajax(metodo, url, variable1, valor1) {
   }
 
   httpRequest.onreadystatechange = function () {
-    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+    if (httpRequest.readyState == 4 && httpRequest.status == 200) { 
     }
   };
 
