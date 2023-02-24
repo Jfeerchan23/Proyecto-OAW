@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <form method="get" name="form" id="URLform">
         <input type="text" id="feedurl" name="feedurl" placeholder="Escribe una URL" onclick="this.select()" required>
-        <input type="submit" value="Agregar" id="btnSubmit" name="btnSubmit" />
+        <input type="submit"  id="btnSubmit" name="btnSubmit" />
         <button type="button" onclick="editarSitios()">Editar</button>
         <button type="button" onclick="editarSitios()">Actualizar</button>
     </form>
