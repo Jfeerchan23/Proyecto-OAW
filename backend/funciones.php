@@ -9,5 +9,5 @@ function ejecutarSQL ($servidor, $usuario, $contrasena, $basedatos, $sentenciaSQ
 
     $resultado = mysqli_query($conexion, $sentenciaSQL);
     mysqli_close($conexion);
-
+    return $resultado;
 }
