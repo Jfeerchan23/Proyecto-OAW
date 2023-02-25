@@ -1,62 +1,100 @@
+var datos = [];
+document.body.onload = function () {
+  traerDatos();
+};
 
-const sitios = ['🍅', '🍄', '🥦', '🥒', '🌽', '🥕', '🥑'];
-function editarSitios(){
-    ventana = window.open("pags/tablaSitios.php","ventana", "width=350,height=250");
-}
-function agregarURL(){
-   const sitio = document.getElementById("feedurl").value;
-    console.log(sitio.trim());
-    //Se valida que no se envie un input vacío
-    if(sitio.trim().length>0){
-        sitios.push(sitio);
+function traerDatos() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "scripts/noticias.json", true);
+  xhttp.send();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      datos = JSON.parse(this.responseText);
+      let res = document.querySelector("#res");
+      res.innerHTML = "";
+      for (let item of datos) {
+        let ctg = "";
+        for (let categoria of item.categorias) {
+          ctg += categoria.nombre + " ";
+        }
+
+        res.innerHTML += `
+      <tr>
+        <td>
+        <div>
+        <div>
+            <div>
+                <h2><a class="feed_title" target="_blank">${item.titulo}</a></h2>
+                <span>${item.fecha}</span> <!--Fecha de la publicación-->
+            </div>
+            <!-- Cuerpo de la noticia-->
+            <div class="post-content">
+            ${item.descripcion}
+            </div>
+            <div>
+                Categorías: ${ctg}
+            </div>
+            <div>
+                <!-- botón leer más. Con enlace a la noticia-->
+                <a href=" ${item.url}" target="_blank">Este es un enlace</a>
+            </div>
+        </div>
+    </div>
+        
+        </td>
+      </tr>
+      `;
+      }
     }
-    //Se limpia el input de la url
-    document.getElementById("feedurl").value = "";
-  
-}
-
-function eliminar(el) {
-    var index = $(el).closest("tr").index()
-    console.log(index);
-    let tabla = document.getElementById("tablaURL");
-    let ID =tabla.rows[index+1].cells[0].innerHTML;
-    console.log(ID);
-    //FUNCIÓN PARA ELIMINAR DE BASE DE DATOS
-
-
+  };
 }
 
 let form = document.getElementById("URLform");
 
 form.addEventListener("submit", (e) => {
+  var feedURL = form.feedurl;
+  var metodo = form.method;
+  var url = "backend/xxx.php";
 
-   var feedURL =form.feedurl;
-   var metodo = form.method;
-   var url = "../backend/xxxxx.php";
-   
-   ajax(metodo, url, "resultado", feedURL.value);
+  ajax(metodo, url, "feedurl", feedURL.value);
+});
 
-  });
+function ajax(metodo, url, variable1, valor1) {
+  var httpRequest;
 
-  function ajax(metodo, url, variable1, valor1){
-    var httpRequest;
+  if (window.XMLHttpRequest) {
+    httpRequest = new XMLHttpRequest();
+  } else {
+    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+  }
 
-    if (window.XMLHttpRequest) {
-        httpRequest = new XMLHttpRequest();
-    }else{
-        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+  httpRequest.onreadystatechange = function () {
+    if (httpRequest.readyState == 4 && httpRequest.status == 200) { 
     }
+  };
 
-    httpRequest.onreadystatechange = function() {
-        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-        }
-    }
-
-    if(metodo == "get"){
-        httpRequest.open(metodo, url+"?"+variable1+"=" + valor1);
-    }else{
-        httpRequest.open(metodo, url);
-        httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    }
-    httpRequest.send(variable1+"=" + valor1);
+  if (metodo == "get") {
+    httpRequest.open(metodo, url + "?" + variable1 + "=" + valor1);
+  } else {
+    httpRequest.open(metodo, url);
+    httpRequest.setRequestHeader(
+      "Content-Type",
+      "application/x-www-form-urlencoded"
+    );
+  }
+  httpRequest.send(variable1 + "=" + valor1);
 }
+function editarSitios() {
+  ventana = window.open(
+    "pags/tablaSitios.php",
+    "ventana",
+    "width=350,height=250"
+  );
+}
+
+//Cuando se hace la selección
+$("#idCategoria").change(function () {
+  //Normalmente se envía el value del select
+  var idCategoria = $("#idCategoria").val();
+  console.log(idCategoria);
+});
