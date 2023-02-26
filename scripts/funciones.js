@@ -58,6 +58,7 @@ function guardarURL(){
   var url = "backend/subirURLS.php";
   
   ajax(metodo,url,"RSSURL",feedURL);
+  document.getElementById("RSSURL").value='';
   
 }
 
@@ -90,7 +91,7 @@ function editarSitios() {
   ventana = window.open(
     "pags/tablaSitios.php",
     "ventana",
-    "width=350,height=250"
+    "width=1000,height=400"
   );
 }
 
