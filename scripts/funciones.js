@@ -49,15 +49,17 @@ function traerDatos() {
   };
 }
 
-let form = document.getElementById("URLform");
 
-form.addEventListener("submit", (e) => {
-  var feedURL = form.feedurl;
+
+function guardarURL(){
+  let form = document.getElementById("URLform");
+  var feedURL = document.getElementById("RSSURL").value;
   var metodo = form.method;
-  var url = "backend/xxx.php";
-
-  ajax(metodo, url, "feedurl", feedURL.value);
-});
+  var url = "backend/subirURLS.php";
+  
+  ajax(metodo,url,"RSSURL",feedURL);
+  
+}
 
 function ajax(metodo, url, variable1, valor1) {
   var httpRequest;
