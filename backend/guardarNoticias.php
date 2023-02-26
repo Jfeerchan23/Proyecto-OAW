@@ -31,12 +31,4 @@
             . "'" . $descripcion . "') ";
             ejecutarSQL($servidor, $usuario, $contrasena, $basedatos, $sentenciaSQL);
     }
-
-    function getID($url) {
-        include ("variables.php");
-        $sentenciaSQL = "SELECT id FROM sitiosweb WHERE url='". $url. "'";
-        $resultado = ejecutarSQL($servidor, $usuario, $contrasena, $basedatos, $sentenciaSQL);
-        $fila = mysqli_fetch_assoc($resultado);
-        return $fila["id"];
-    }
 ?>
