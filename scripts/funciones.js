@@ -101,3 +101,7 @@ $("#idCategoria").change(function () {
   var idCategoria = $("#idCategoria").val();
   console.log(idCategoria);
 });
+
+function actualizar(){
+  $("#idCategoria").val()="1";
+}

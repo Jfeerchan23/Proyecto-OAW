@@ -14,7 +14,7 @@
         <input type="text" id="RSSURL" name="RSSURL" placeholder="Escribe una URL" onclick="this.select()" required>
         <button type="button" onclick="guardarURL()"> Agregar</button>
         <button type="button" onclick="editarSitios()">Editar</button>
-        <button type="button" onclick="editarSitios()">Actualizar</button>
+        <button type="button" onclick="actualizar()">Actualizar</button>
     </form>
     <form>
         <input type="text" id="buscarNoticia" name="buscarNoticia" placeholder="Busca una noticia" onclick="this.select()" required>
