@@ -51,15 +51,15 @@ function traerDatos() {
 
 
 
-function guardarURL(){
+function guardarURL() {
   let form = document.getElementById("URLform");
   var feedURL = document.getElementById("RSSURL").value;
   var metodo = form.method;
   var url = "backend/subirURLS.php";
-  
-  ajax(metodo,url,"RSSURL",feedURL);
-  document.getElementById("RSSURL").value='';
-  
+
+  ajax(metodo, url, "RSSURL", feedURL);
+  document.getElementById("RSSURL").value = '';
+
 }
 
 function ajax(metodo, url, variable1, valor1) {
@@ -72,7 +72,7 @@ function ajax(metodo, url, variable1, valor1) {
   }
 
   httpRequest.onreadystatechange = function () {
-    if (httpRequest.readyState == 4 && httpRequest.status == 200) { 
+    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
     }
   };
 
@@ -102,6 +102,34 @@ $("#idCategoria").change(function () {
   console.log(idCategoria);
 });
 
-function actualizar(){
-  $("#idCategoria").val()="1";
+function actualizar() {
+
+  document.getElementById("idCategoria").value = '2';
+  var httpRequest;
+
+  if (window.XMLHttpRequest) {
+    httpRequest = new XMLHttpRequest();
+  } else {
+    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  httpRequest.onreadystatechange = function () {
+    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+    }
+  };
+  
+  httpRequest.open("post","backend/actualizarBD.php");
+  httpRequest.onload = function(){
+    if(httpRequest.status == 200){
+      var json = JSON.parse(httpRequest.responseText);
+      console.log(json);
+    }else{
+      console.log('Existe un error de tipo'+httpRequest.status);
+    }
+  }
+
+  httpRequest.send();
+
+
+
 }

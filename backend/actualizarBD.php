@@ -2,6 +2,7 @@
     include ("variables.php");
     include ("funciones.php");
 
+
     $sentenciaSQL = "DELETE FROM noticias";
     $resultado = ejecutarSQL($servidor, $usuario, $contrasena, $basedatos, $sentenciaSQL);
 
@@ -12,5 +13,14 @@
         actualizarNoticias($fila['URL']);
     }
 
-    
-?>
+    $sentenciaSQL = "SELECT * FROM noticias";
+    $resultado2 = ejecutarSQL($servidor, $usuario, $contrasena, $basedatos, $sentenciaSQL);
+
+    $myArray = array();
+    $tempArray = array();
+    while ($row = $resultado2->fetch_object()) {
+        $tempArray = $row;
+        array_push($myArray, $tempArray);
+    }
+  
+    echo json_encode($myArray);

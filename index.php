@@ -24,8 +24,8 @@
         Ordenar por:
     <select id="idCategoria" name="idCategoria" required>
         <option value="1">Título</option>
-        <option value="2">Fecha</option>
-        <option value="3">URL</option>
+        <option value="2" selected>Fecha</option>
+        <option value="3">Categorías</option>
     </select>
 
     </div>
