@@ -13,7 +13,7 @@
         actualizarNoticias($fila['URL']);
     }
 
-    $sentenciaSQL = "SELECT * FROM noticias";
+    $sentenciaSQL = "SELECT * FROM noticias ORDER BY Fecha";
     $resultado2 = ejecutarSQL($servidor, $usuario, $contrasena, $basedatos, $sentenciaSQL);
 
     $myArray = array();
