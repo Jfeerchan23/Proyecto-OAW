@@ -23,7 +23,8 @@ switch($tipoDeOrdenamineto){
                     "ID"=>$row["ID"],
                     "Titulo"=>$row["Titulo"],
                     "Descripcion"=>$row["Descripcion"],
-                    "Categorias"=>$row["Categorias"]
+                    "Categorias"=>$row["Categorias"],
+                    "Fecha"=>$row["Fecha"]
                   );
                   array_push($allData, $datosArray);
             }
@@ -42,7 +43,8 @@ switch($tipoDeOrdenamineto){
                     "ID"=>$row["ID"],
                     "Titulo"=>$row["Titulo"],
                     "Descripcion"=>$row["Descripcion"],
-                    "Categorias"=>$row["Categorias"]
+                    "Categorias"=>$row["Categorias"],
+                    "Fecha"=>$row["Fecha"]
                   );
                   array_push($allData, $datosArray);
             }
@@ -61,7 +63,8 @@ switch($tipoDeOrdenamineto){
                     "ID"=>$row["ID"],
                     "Titulo"=>$row["Titulo"],
                     "Descripcion"=>$row["Descripcion"],
-                    "Categorias"=>$row["Categorias"]
+                    "Categorias"=>$row["Categorias"],
+                    "Fecha"=>$row["Fecha"]
                   );
                   array_push($allData, $datosArray);
             }
@@ -81,7 +84,8 @@ switch($tipoDeOrdenamineto){
                     "ID"=>$row["ID"],
                     "Titulo"=>$row["Titulo"],
                     "Descripcion"=>$row["Descripcion"],
-                    "Categorias"=>$row["Categorias"]
+                    "Categorias"=>$row["Categorias"],
+                    "Fecha"=>$row["Fecha"]
                   );
                   array_push($allData, $datosArray);
             }
