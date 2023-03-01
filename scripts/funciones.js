@@ -1,6 +1,7 @@
 var datos = [];
 document.body.onload = function () {
-  traerDatos();
+ 
+  actualizar();
 };
 
 function traerDatos() {
@@ -49,15 +50,18 @@ function traerDatos() {
   };
 }
 
-let form = document.getElementById("URLform");
 
-form.addEventListener("submit", (e) => {
-  var feedURL = form.feedurl;
+
+function guardarURL() {
+  let form = document.getElementById("URLform");
+  var feedURL = document.getElementById("RSSURL").value;
   var metodo = form.method;
-  var url = "backend/xxx.php";
+  var url = "backend/subirURLS.php";
 
-  ajax(metodo, url, "feedurl", feedURL.value);
-});
+  ajax(metodo, url, "RSSURL", feedURL);
+  document.getElementById("RSSURL").value = '';
+
+}
 
 function ajax(metodo, url, variable1, valor1) {
   var httpRequest;
@@ -69,7 +73,7 @@ function ajax(metodo, url, variable1, valor1) {
   }
 
   httpRequest.onreadystatechange = function () {
-    if (httpRequest.readyState == 4 && httpRequest.status == 200) { 
+    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
     }
   };
 
@@ -88,7 +92,7 @@ function editarSitios() {
   ventana = window.open(
     "pags/tablaSitios.php",
     "ventana",
-    "width=350,height=250"
+    "width=1000,height=400"
   );
 }
 
@@ -98,3 +102,65 @@ $("#idCategoria").change(function () {
   var idCategoria = $("#idCategoria").val();
   console.log(idCategoria);
 });
+
+function actualizar() {
+
+  document.getElementById("idCategoria").value = '2';
+  var httpRequest;
+
+  if (window.XMLHttpRequest) {
+    httpRequest = new XMLHttpRequest();
+  } else {
+    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  httpRequest.onreadystatechange = function () {
+    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+    }
+  };
+  
+  httpRequest.open("post","backend/actualizarBD.php");
+  httpRequest.onload = function(){
+    if(httpRequest.status == 200){
+     var datos = JSON.parse(httpRequest.responseText);
+      let res = document.querySelector("#res");
+      res.innerHTML = "";
+      for (let item of datos) {
+        res.innerHTML += `
+      <tr>
+        <td>
+        <div>
+        <div>
+            <div>
+                <h2><a class="feed_title" target="_blank">${item.Titulo}</a></h2>
+                <span>${item.Fecha}</span> <!--Fecha de la publicación-->
+            </div>
+            <!-- Cuerpo de la noticia-->
+            <div class="post-content">
+            ${item.Descripcion}
+            </div>
+            <div>
+                Categorías: ${item.Categorias}
+            </div>
+            <div>
+                <!-- botón leer más. Con enlace a la noticia-->
+                <a href=" ${item.URL}" target="_blank">Este es un enlace</a>
+            </div>
+        </div>
+    </div>
+        
+        </td>
+      </tr>
+      `;
+      }
+      
+    }else{
+      console.log('Existe un error de tipo'+httpRequest.status);
+    }
+  }
+
+  httpRequest.send();
+
+
+
+}

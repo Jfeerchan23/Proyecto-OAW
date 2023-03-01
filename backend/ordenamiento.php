@@ -42,9 +42,9 @@ switch($tipoDeOrdenamineto){
                     "ID"=>$row["ID"],
                     "Titulo"=>$row["Titulo"],
                     "Descripcion"=>$row["Descripcion"],
-                    "Categoria"=>$row["Categoria"]
+                    "Categorias"=>$row["Categorias"]
                   );
-                  $allData.array_push($datosArray);
+                  array_push($allData, $datosArray);
             }
             } else {
             echo "0 results";
@@ -61,9 +61,9 @@ switch($tipoDeOrdenamineto){
                     "ID"=>$row["ID"],
                     "Titulo"=>$row["Titulo"],
                     "Descripcion"=>$row["Descripcion"],
-                    "Categoria"=>$row["Categoria"]
+                    "Categorias"=>$row["Categorias"]
                   );
-                  $allData.array_push($datosArray);
+                  array_push($allData, $datosArray);
             }
             } else {
             echo "0 results";
@@ -77,13 +77,13 @@ switch($tipoDeOrdenamineto){
         if ($result->num_rows > 0) {
             $allData = array();
             while($row = $result->fetch_assoc()) {
-              $datosArray = array(
-                "ID"=>$row["ID"],
-                "Titulo"=>$row["Titulo"],
-                "Descripcion"=>$row["Descripcion"],
-                "Categoria"=>$row["Categoria"]
-              );
-              $allData.array_push($datosArray);
+                $datosArray = array(
+                    "ID"=>$row["ID"],
+                    "Titulo"=>$row["Titulo"],
+                    "Descripcion"=>$row["Descripcion"],
+                    "Categorias"=>$row["Categorias"]
+                  );
+                  array_push($allData, $datosArray);
             }
         } else {
             echo "0 results";
@@ -94,7 +94,7 @@ switch($tipoDeOrdenamineto){
 
 $conexion->close();
 
- echo json_encode($allData);
+ return json_encode($allData);
 
 
 ?>
