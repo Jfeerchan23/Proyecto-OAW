@@ -23,7 +23,8 @@ switch($tipoDeOrdenamineto){
                     "ID"=>$row["ID"],
                     "Titulo"=>$row["Titulo"],
                     "Descripcion"=>$row["Descripcion"],
-                    "Categorias"=>$row["Categorias"]
+                    "Categorias"=>$row["Categorias"],
+                    "Fecha"=>$row["Fecha"]
                   );
                   array_push($allData, $datosArray);
             }
@@ -42,7 +43,8 @@ switch($tipoDeOrdenamineto){
                     "ID"=>$row["ID"],
                     "Titulo"=>$row["Titulo"],
                     "Descripcion"=>$row["Descripcion"],
-                    "Categorias"=>$row["Categorias"]
+                    "Categorias"=>$row["Categorias"],
+                    "Fecha"=>$row["Fecha"]
                   );
                   array_push($allData, $datosArray);
             }
@@ -61,7 +63,8 @@ switch($tipoDeOrdenamineto){
                     "ID"=>$row["ID"],
                     "Titulo"=>$row["Titulo"],
                     "Descripcion"=>$row["Descripcion"],
-                    "Categorias"=>$row["Categorias"]
+                    "Categorias"=>$row["Categorias"],
+                    "Fecha"=>$row["Fecha"]
                   );
                   array_push($allData, $datosArray);
             }
@@ -69,9 +72,30 @@ switch($tipoDeOrdenamineto){
             echo "0 results";
         }
         break;
+
+        case 4: 
+            $sql = "SELECT ID, Titulo, Descripcion, Categorias, Fecha FROM noticias ORDER BY Descripcion";
+            $result = $conexion->query($sql);
+    
+            if ($result->num_rows > 0) {
+                $allData = array();
+                while($row = $result->fetch_assoc()) {
+                    $datosArray = array(
+                        "ID"=>$row["ID"],
+                        "Titulo"=>$row["Titulo"],
+                        "Descripcion"=>$row["Descripcion"],
+                        "Categorias"=>$row["Categorias"],
+                        "Fecha"=>$row["Fecha"]
+                      );
+                      array_push($allData, $datosArray);
+                }
+                } else {
+                echo "0 results";
+            }
+            break;
     
     default:
-        $sql = "SELECT ID, Titulo, Descripcion, Categorias, Fecha FROM noticias ORDER BY ID";
+        $sql = "SELECT ID, Titulo, Descripcion, Categorias, Fecha FROM noticias ORDER BY URL";
         $result = $conexion->query($sql);
 
         if ($result->num_rows > 0) {
@@ -81,7 +105,8 @@ switch($tipoDeOrdenamineto){
                     "ID"=>$row["ID"],
                     "Titulo"=>$row["Titulo"],
                     "Descripcion"=>$row["Descripcion"],
-                    "Categorias"=>$row["Categorias"]
+                    "Categorias"=>$row["Categorias"],
+                    "Fecha"=>$row["Fecha"]
                   );
                   array_push($allData, $datosArray);
             }
@@ -94,7 +119,7 @@ switch($tipoDeOrdenamineto){
 
 $conexion->close();
 
- return json_encode($allData);
+ echo json_encode($allData);
 
 
 ?>
