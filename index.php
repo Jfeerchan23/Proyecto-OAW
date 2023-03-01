@@ -22,7 +22,7 @@
 
                     <div class="col-1 col-md-5 mb-2 mb-md-0">
                         <h1 id="tituloHeader">Lector de Noticias RSS</h1>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                        <script src="scripts/jquery-3.6.3.js"></script>
                         <form method="post" name="form" id="URLform">
                             <input type="text" id="RSSURL" name="RSSURL" placeholder="Escribe una URL" onclick="this.select()" required>
                             <button type="button" onclick="guardarURL()"> Agregar</button>
