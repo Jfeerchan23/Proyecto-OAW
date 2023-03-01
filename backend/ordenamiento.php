@@ -23,9 +23,9 @@ switch($tipoDeOrdenamineto){
                     "ID"=>$row["ID"],
                     "Titulo"=>$row["Titulo"],
                     "Descripcion"=>$row["Descripcion"],
-                    "Categoria"=>$row["Categoria"]
+                    "Categorias"=>$row["Categorias"]
                   );
-                  $allData.array_push($datosArray);
+                  array_push($allData, $datosArray);
             }
         } else {
             echo "0 results";
@@ -94,7 +94,7 @@ switch($tipoDeOrdenamineto){
 
 $conexion->close();
 
- return json_encode($allData);
+ echo json_encode($allData);
 
 
 ?>
