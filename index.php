@@ -40,6 +40,7 @@
                                 <option value="2" selected>Fecha</option>
                                 <option value="3">Categorías</option>
                                 <option value="4">Descripción</option>
+                                <option value="5">URL</option>
                             </select>
                         </div>
                     </div>

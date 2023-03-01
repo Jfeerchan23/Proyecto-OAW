@@ -100,7 +100,65 @@ function editarSitios() {
 $("#idCategoria").change(function () {
   //Normalmente se envía el value del select
   var idCategoria = $("#idCategoria").val();
-  console.log(idCategoria);
+  var httpRequest;
+
+  if (window.XMLHttpRequest) {
+    httpRequest = new XMLHttpRequest();
+  } else {
+    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  httpRequest.onreadystatechange = function () {
+    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+    }
+  };
+  
+  httpRequest.open("get","backend/ordenamiento.php" + "?" + "orden" + "=" + idCategoria);
+
+  httpRequest.onload = function(){
+    if(httpRequest.status == 200){
+     var datos = JSON.parse(httpRequest.responseText);
+      let res = document.querySelector("#res");
+      res.innerHTML = "";
+      for (let item of datos) {
+        res.innerHTML += `
+      <tr>
+        <td>
+        <div>
+        <div>
+            <div>
+                <h2><a class="feed_title" target="_blank">${item.Titulo}</a></h2>
+                <span>${item.Fecha}</span> <!--Fecha de la publicación-->
+            </div>
+            <!-- Cuerpo de la noticia-->
+            <div class="post-content">
+            ${item.Descripcion}
+            </div>
+            <div>
+                Categorías: ${item.Categorias}
+            </div>
+            <div>
+                <!-- botón leer más. Con enlace a la noticia-->
+                <a href=" ${item.URL}" target="_blank">Este es un enlace</a>
+            </div>
+        </div>
+    </div>
+        
+        </td>
+      </tr>
+      `;
+      }
+      
+    }else{
+      console.log('Existe un error de tipo'+httpRequest.status);
+    }
+  }
+
+  httpRequest.send();
+
+
+
+
 });
 
 function actualizar() {
