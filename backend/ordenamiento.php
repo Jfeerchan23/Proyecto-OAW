@@ -36,7 +36,7 @@ switch($tipoDeOrdenamineto){
             echo "0 results";
         }
         break;
-    case 3: 
+    case 3:  //Ordenamineto por Categorías
         $sql = "SELECT ID, Titulo, Descripcion, Categorias, Fecha FROM noticias ORDER BY Categorias";
         $result = $conexion->query($sql);
 
@@ -48,6 +48,20 @@ switch($tipoDeOrdenamineto){
             echo "0 results";
         }
         break;
+
+    case 4:  //Ordenamineto por Descripcion
+        $sql = "SELECT ID, Titulo, Descripcion, Categorias, Fecha FROM noticias ORDER BY Descripcion";
+        $result = $conexion->query($sql);
+
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<br> id: ". $row["ID"]. " - Titulo: ". $row["Titulo"]. " - Descripcion " . $row["Descripcion"] . " - Categoria: " . $row["Categorias"] . " - Fecha: " . $row["Fecha"] . "<br>";
+            }
+            } else {
+            echo "0 results";
+        }
+        break;
+
     
     default:
         $sql = "SELECT ID, Titulo, Descripcion, Categorias, Fecha FROM noticias ORDER BY ID";
@@ -63,6 +77,3 @@ switch($tipoDeOrdenamineto){
 }
 
 $conexion->close();
-
-
-?>

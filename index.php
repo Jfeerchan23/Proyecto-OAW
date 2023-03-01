@@ -39,6 +39,7 @@
                                 <option value="1">Título</option>
                                 <option value="2" selected>Fecha</option>
                                 <option value="3">Categorías</option>
+                                <option value="4">Descripción</option>
                             </select>
                         </div>
                     </div>
