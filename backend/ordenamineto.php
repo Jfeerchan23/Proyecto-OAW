@@ -9,15 +9,23 @@ $conexion = new mysqli($servidor, $usuario, $contrasena, $basedatos);
 if ($conexion->connect_error) {
     die("Connection failed: " . $conexion->connect_error);
 }
+
+$tipoDeOrdenamineto=$_GET['orden'];
   
 switch($tipoDeOrdenamineto){
     case 1: //Ordenamineto por Titulo
         $sql = "SELECT ID, Titulo, Descripcion, Categorias, Fecha FROM noticias ORDER BY Titulo";
         $result = $conexion->query($sql);
-
+        $allData = array();
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-            echo "<br> id: ". $row["ID"]. " - Titulo: ". $row["Titulo"]. " - Descripcion " . $row["Descripcion"] . " - Categoria: " . $row["Categorias"] . " - Fecha: " . $row["Fecha"] . "<br>";
+                $datosArray = array(
+                    "ID"=>$row["ID"],
+                    "Titulo"=>$row["Titulo"],
+                    "Descripcion"=>$row["Descripcion"],
+                    "Categoria"=>$row["Categoria"]
+                  );
+                  $allData.array_push($datosArray);
             }
         } else {
             echo "0 results";
@@ -27,10 +35,16 @@ switch($tipoDeOrdenamineto){
     case 2: //Ordenamineto por Fecha
         $sql = "SELECT ID, Titulo, Descripcion, Categorias, Fecha FROM noticias ORDER BY Fecha";
         $result = $conexion->query($sql);
-
+        $allData = array();
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-              echo "<br> id: ". $row["ID"]. " - Titulo: ". $row["Titulo"]. " - Descripcion " . $row["Descripcion"] . " - Categoria: " . $row["Categorias"] . " - Fecha: " . $row["Fecha"] . "<br>";
+                $datosArray = array(
+                    "ID"=>$row["ID"],
+                    "Titulo"=>$row["Titulo"],
+                    "Descripcion"=>$row["Descripcion"],
+                    "Categoria"=>$row["Categoria"]
+                  );
+                  $allData.array_push($datosArray);
             }
             } else {
             echo "0 results";
@@ -41,8 +55,15 @@ switch($tipoDeOrdenamineto){
         $result = $conexion->query($sql);
 
         if ($result->num_rows > 0) {
+            $allData = array();
             while($row = $result->fetch_assoc()) {
-              echo "<br> id: ". $row["ID"]. " - Titulo: ". $row["Titulo"]. " - Descripcion " . $row["Descripcion"] . " - Categoria: " . $row["Categorias"] . " - Fecha: " . $row["Fecha"] . "<br>";
+                $datosArray = array(
+                    "ID"=>$row["ID"],
+                    "Titulo"=>$row["Titulo"],
+                    "Descripcion"=>$row["Descripcion"],
+                    "Categoria"=>$row["Categoria"]
+                  );
+                  $allData.array_push($datosArray);
             }
             } else {
             echo "0 results";
@@ -54,15 +75,26 @@ switch($tipoDeOrdenamineto){
         $result = $conexion->query($sql);
 
         if ($result->num_rows > 0) {
+            $allData = array();
             while($row = $result->fetch_assoc()) {
-              echo "<br> id: ". $row["ID"]. " - Titulo: ". $row["Titulo"]. " - Descripcion " . $row["Descripcion"] . " - Categoria: " . $row["Categorias"] . " - Fecha: " . $row["Fecha"] . "<br>";
+              $datosArray = array(
+                "ID"=>$row["ID"],
+                "Titulo"=>$row["Titulo"],
+                "Descripcion"=>$row["Descripcion"],
+                "Categoria"=>$row["Categoria"]
+              );
+              $allData.array_push($datosArray);
             }
-            } else {
+        } else {
             echo "0 results";
         }
 }
 
+
+
 $conexion->close();
+
+ return json_encode($allData);
 
 
 ?>
