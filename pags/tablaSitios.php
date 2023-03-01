@@ -33,11 +33,11 @@ include("../backend/variables.php");
                 die("Fallo: " . mysqli_connect_error());
             }
             $sentenciaSQL = "SELECT * FROM `sitiosweb`";
-            $imcRequest = mysqli_query($conexion, $sentenciaSQL);
+            $Request = mysqli_query($conexion, $sentenciaSQL);
             mysqli_close($conexion);
 
-            if (mysqli_num_rows($imcRequest) > 0) {
-                while ($registro = mysqli_fetch_assoc($imcRequest)) {
+            if (mysqli_num_rows($Request) > 0) {
+                while ($registro = mysqli_fetch_assoc($Request)) {
                     echo "<tr> 
                         <td>" . $registro['id'] . "</td>
                         <td>" . $registro['url'] . "</td>
