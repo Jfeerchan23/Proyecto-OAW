@@ -1,6 +1,5 @@
 var datos = [];
 document.body.onload = function () {
- 
   actualizar();
 };
 
@@ -112,12 +111,12 @@ $("#idCategoria").change(function () {
     if (httpRequest.readyState == 4 && httpRequest.status == 200) {
     }
   };
-  
-  httpRequest.open("get","backend/ordenamiento.php" + "?" + "orden" + "=" + idCategoria);
 
-  httpRequest.onload = function(){
-    if(httpRequest.status == 200){
-     var datos = JSON.parse(httpRequest.responseText);
+  httpRequest.open("get", "backend/ordenamiento.php" + "?" + "orden" + "=" + idCategoria);
+
+  httpRequest.onload = function () {
+    if (httpRequest.status == 200) {
+      var datos = JSON.parse(httpRequest.responseText);
       let res = document.querySelector("#res");
       res.innerHTML = "";
       for (let item of datos) {
@@ -148,17 +147,12 @@ $("#idCategoria").change(function () {
       </tr>
       `;
       }
-      
-    }else{
-      console.log('Existe un error de tipo'+httpRequest.status);
+
+    } else {
+      console.log('Existe un error de tipo' + httpRequest.status);
     }
   }
-
   httpRequest.send();
-
-
-
-
 });
 
 function actualizar() {
@@ -176,11 +170,10 @@ function actualizar() {
     if (httpRequest.readyState == 4 && httpRequest.status == 200) {
     }
   };
-  
-  httpRequest.open("post","backend/actualizarBD.php");
-  httpRequest.onload = function(){
-    if(httpRequest.status == 200){
-     var datos = JSON.parse(httpRequest.responseText);
+  httpRequest.open("post", "backend/actualizarBD.php");
+  httpRequest.onload = function () {
+    if (httpRequest.status == 200) {
+      var datos = JSON.parse(httpRequest.responseText);
       let res = document.querySelector("#res");
       res.innerHTML = "";
       for (let item of datos) {
@@ -211,9 +204,9 @@ function actualizar() {
       </tr>
       `;
       }
-      
-    }else{
-      console.log('Existe un error de tipo'+httpRequest.status);
+
+    } else {
+      console.log('Existe un error de tipo' + httpRequest.status);
     }
   }
 
