@@ -3,53 +3,6 @@ document.body.onload = function () {
   actualizar();
 };
 
-function traerDatos() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "scripts/noticias.json", true);
-  xhttp.send();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      datos = JSON.parse(this.responseText);
-      let res = document.querySelector("#res");
-      res.innerHTML = "";
-      for (let item of datos) {
-        let ctg = "";
-        for (let categoria of item.categorias) {
-          ctg += categoria.nombre + " ";
-        }
-
-        res.innerHTML += `
-      <tr>
-        <td>
-        <div>
-        <div>
-            <div>
-                <h2><a class="feed_title" target="_blank">${item.titulo}</a></h2>
-                <span>${item.fecha}</span> <!--Fecha de la publicación-->
-            </div>
-            <!-- Cuerpo de la noticia-->
-            <div class="post-content">
-            ${item.descripcion}
-            </div>
-            <div>
-                Categorías: ${ctg}
-            </div>
-            <div>
-                <!-- botón leer más. Con enlace a la noticia-->
-                <a href=" ${item.url}" target="_blank">Este es un enlace</a>
-            </div>
-        </div>
-    </div>
-        
-        </td>
-      </tr>
-      `;
-      }
-    }
-  };
-}
-
-
 
 function guardarURL() {
   let form = document.getElementById("URLform");
@@ -211,6 +164,72 @@ function actualizar() {
   }
 
   httpRequest.send();
+}
+
+function buscar(){
+
+  let form = document.getElementById("BUSCARform");
+  var busqueda = document.getElementById("buscarNoticia").value;
+
+  var httpRequest;
+
+  if (window.XMLHttpRequest) {
+    httpRequest = new XMLHttpRequest();
+  } else {
+    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  httpRequest.onreadystatechange = function () {
+    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+    }
+  };
+
+  httpRequest.open("get", "backend/buscarNoticia.php" + "?" + "busqueda" + "=" + busqueda);
+
+  httpRequest.onload = function () {
+    if (httpRequest.status == 200) {
+      var datos = JSON.parse(httpRequest.responseText);
+      let res = document.querySelector("#res");
+      res.innerHTML = "";
+      for (let item of datos) {
+        res.innerHTML += `
+      <tr>
+        <td>
+        <div>
+        <div>
+            <div>
+                <h2><a class="feed_title" target="_blank">${item.Titulo}</a></h2>
+                <span>${item.Fecha}</span> <!--Fecha de la publicación-->
+            </div>
+            <!-- Cuerpo de la noticia-->
+            <div class="post-content">
+            ${item.Descripcion}
+            </div>
+            <div>
+                Categorías: ${item.Categorias}
+            </div>
+            <div>
+                <!-- botón leer más. Con enlace a la noticia-->
+                <a href=" ${item.URL}" target="_blank">Este es un enlace</a>
+            </div>
+        </div>
+    </div>
+        
+        </td>
+      </tr>
+      `;
+      }
+
+    } else {
+      console.log('Existe un error de tipo' + httpRequest.status);
+    }
+  }
+  httpRequest.send();
+
+
+
+
+
 
 
 

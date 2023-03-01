@@ -29,9 +29,9 @@
                             <button type="button" class="btn btn-primary" onclick="editarSitios()">Editar</button>
                             <button type="button" class="btn btn-info" onclick="actualizar()">Actualizar</button>
                         </form>
-                        <form>
+                        <form method="get" name="form" id="BUSCARform">
                             <input type="text" id="buscarNoticia" name="buscarNoticia" placeholder="Busca una noticia" onclick="this.select()" required>
-                            <button type="button">Buscar</button>
+                            <button type="button" onclick="buscar()">Buscar</button>
                         </form>
                         <div>
                             Ordenar por:
