@@ -1,6 +1,7 @@
 var datos = [];
 document.body.onload = function () {
-  traerDatos();
+ 
+  actualizar();
 };
 
 function traerDatos() {
@@ -121,8 +122,38 @@ function actualizar() {
   httpRequest.open("post","backend/actualizarBD.php");
   httpRequest.onload = function(){
     if(httpRequest.status == 200){
-      var json = JSON.parse(httpRequest.responseText);
-      console.log(json);
+     var datos = JSON.parse(httpRequest.responseText);
+      let res = document.querySelector("#res");
+      res.innerHTML = "";
+      for (let item of datos) {
+        res.innerHTML += `
+      <tr>
+        <td>
+        <div>
+        <div>
+            <div>
+                <h2><a class="feed_title" target="_blank">${item.Titulo}</a></h2>
+                <span>${item.Fecha}</span> <!--Fecha de la publicación-->
+            </div>
+            <!-- Cuerpo de la noticia-->
+            <div class="post-content">
+            ${item.Descripcion}
+            </div>
+            <div>
+                Categorías: ${item.Categorias}
+            </div>
+            <div>
+                <!-- botón leer más. Con enlace a la noticia-->
+                <a href=" ${item.URL}" target="_blank">Este es un enlace</a>
+            </div>
+        </div>
+    </div>
+        
+        </td>
+      </tr>
+      `;
+      }
+      
     }else{
       console.log('Existe un error de tipo'+httpRequest.status);
     }
