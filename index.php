@@ -60,7 +60,7 @@
 
     <div class="container">
         <div class="section">
-            <table class='table-dark table -striped'>
+            <table class='table-light table -striped'>
 
                 <thead>
                     <tr>
