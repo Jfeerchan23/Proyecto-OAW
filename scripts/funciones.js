@@ -74,24 +74,24 @@ $("#idCategoria").change(function () {
       res.innerHTML = "";
       for (let item of datos) {
         res.innerHTML += `
-      <tr>
+        <tr>
         <td>
         <div>
         <div>
             <div>
-                <h2><a class="feed_title" target="_blank">${item.Titulo}</a></h2>
-                <span>${item.Fecha}</span> <!--Fecha de la publicación-->
+                <h3 class="p-2 bg-secondary text-white">${item.Titulo}</h3>
+                <span ><b>${item.Fecha}</b></span> <!--Fecha de la publicación-->
             </div>
             <!-- Cuerpo de la noticia-->
             <div class="post-content">
             ${item.Descripcion}
             </div>
             <div>
-                Categorías: ${item.Categorias}
+                <b>Categorías:</b> ${item.Categorias}
             </div>
             <div>
                 <!-- botón leer más. Con enlace a la noticia-->
-                <a href=" ${item.URL}" target="_blank">Este es un enlace</a>
+                <a href=" ${item.URL}" target="_blank">Ir al sitio web</a>
             </div>
         </div>
     </div>
@@ -136,19 +136,19 @@ function actualizar() {
         <div>
         <div>
             <div>
-                <h2><a class="feed_title" target="_blank">${item.Titulo}</a></h2>
-                <span>${item.Fecha}</span> <!--Fecha de la publicación-->
+                <h3 class="p-2 bg-secondary text-white">${item.Titulo}</h3>
+                <span ><b>${item.Fecha}</b></span> <!--Fecha de la publicación-->
             </div>
             <!-- Cuerpo de la noticia-->
             <div class="post-content">
             ${item.Descripcion}
             </div>
             <div>
-                Categorías: ${item.Categorias}
+                <b>Categorías:</b> ${item.Categorias}
             </div>
             <div>
                 <!-- botón leer más. Con enlace a la noticia-->
-                <a href=" ${item.URL}" target="_blank">Este es un enlace</a>
+                <a href=" ${item.URL}" target="_blank">Ir al sitio web</a>
             </div>
         </div>
     </div>
@@ -193,24 +193,24 @@ function buscar(){
       res.innerHTML = "";
       for (let item of datos) {
         res.innerHTML += `
-      <tr>
+        <tr>
         <td>
         <div>
         <div>
             <div>
-                <h2><a class="feed_title" target="_blank">${item.Titulo}</a></h2>
-                <span>${item.Fecha}</span> <!--Fecha de la publicación-->
+                <h3 class="p-2 bg-secondary text-white">${item.Titulo}</h3>
+                <span ><b>${item.Fecha}</b></span> <!--Fecha de la publicación-->
             </div>
             <!-- Cuerpo de la noticia-->
             <div class="post-content">
             ${item.Descripcion}
             </div>
             <div>
-                Categorías: ${item.Categorias}
+                <b>Categorías:</b> ${item.Categorias}
             </div>
             <div>
                 <!-- botón leer más. Con enlace a la noticia-->
-                <a href=" ${item.URL}" target="_blank">Este es un enlace</a>
+                <a href=" ${item.URL}" target="_blank">Ir al sitio web</a>
             </div>
         </div>
     </div>
@@ -226,11 +226,5 @@ function buscar(){
   }
   httpRequest.send();
 
-
-
-
-
-
-
-
 }
+

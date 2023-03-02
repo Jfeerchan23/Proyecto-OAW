@@ -11,18 +11,23 @@ include("../backend/variables.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document</title> 
+
+    <link rel="stylesheet" href="../css/interfaz.css">
+    <link rel="stylesheet" href="../bootstrap-5.2.3-dist/css/bootstrap.min.css">
 </head>
 
 <body>
  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <table id="tablaURL" class="table">
-        <thead class="thead-dark">
+
+    <div class="container">
+    <table id="tablaURL" class="table table-striped">
+        <thead>
             <tr>
-                <th>ID</th>
-                <th>URL</th>
-                <th>Eliminar</th>
+                <th scope="col">ID</th>
+                <th scope="col">URL</th>
+                <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -34,22 +39,27 @@ include("../backend/variables.php");
             }
             $sentenciaSQL = "SELECT * FROM `sitiosweb`";
             $Request = mysqli_query($conexion, $sentenciaSQL);
+            $Request = mysqli_query($conexion, $sentenciaSQL);
             mysqli_close($conexion);
 
             if (mysqli_num_rows($Request) > 0) {
                 while ($registro = mysqli_fetch_assoc($Request)) {
-                    echo "<tr> 
-                        <td>" . $registro['id'] . "</td>
-                        <td>" . $registro['url'] . "</td>
-                        <td><button type='button' onclick='eliminar(this)'>X</td>
-                      </tr>";
+                    echo 
+                    "<tr> 
+                        <td class='text-white'>" . $registro['id'] . "</td>
+                        <td class='text-white'> <a class='btn btn-primary' data-toggle='collapse' href=". $registro['url'] ." target='_blank'>".$registro['url']."</a> </td>
+                        <td><button type='button' class='btn btn-danger' onclick='eliminar(this)'>X</td>
+                    </tr>";
                 }
             }
             ?>
-   <script src="../scripts/tablaSitios.js"></script>
+        <script src="../scripts/tablaSitios.js"></script>
         </tbody>
     </table>
 
+    </div>
+
+    
 </body>
 
 </html>
