@@ -16,7 +16,7 @@
 
     <!--- CSS personalizado para el body --->
     <link rel="stylesheet" href="css/interfaz.css"> 
-    <script src="scripts/jquery-3.6.3.js"></script>
+ 
 </head>
 
 
@@ -78,7 +78,9 @@
         </div>
 
     </div>
+    <script src="scripts/jquery-3.6.3.js"></script>
     <script src="scripts/funciones.js"></script>
+  
 </body>
 
 </html>
