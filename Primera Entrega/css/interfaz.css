@@ -1,1 +1,27 @@
-.fondo{background-image:url("../fotografias/Imagen_Fondo.png");background-size:cover;background-position:center;background-repeat:no-repeat;background-color:rgba(0,0,0,.25);padding:100px}body{background:#fc466b;background:-webkit-linear-gradient(to right,#3f5efb,#fc466b);background:linear-gradient(to right,#3f5efb,#fc466b)}.bg-white{background-color:#fff}.tituloHeader{-webkit-text-stroke:2px black;color:cadetblue;padding-bottom:66px;font-weight:700;font-size:94px}
+.fondo{
+    background-image: url("../fotografias/Imagen_Fondo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, .25);
+    padding: 100px;
+    
+}
+
+
+body {
+    background: #FC466B;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3F5EFB, #FC466B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+.tituloHeader{
+    -webkit-text-stroke: 2px black;
+    color: cadetblue;
+    padding-bottom: 66px;
+    font-weight: 700;
+    font-size: 94px;
+}
