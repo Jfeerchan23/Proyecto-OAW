@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto de OAW</title>
-    <!--- Bootstrap con cdn --->
+    <!--- Bootstrap con cdn 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
     
     
-    <!-- Directorio de bootstrap descargado
-    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
-    <script src="bootstrap-5.2.3-dist/js/*"></script> -->
+    <!-- Directorio de bootstrap descargado -->
+    <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap_nuevo.min.css">
+    <script src="bootstrap-5.2.3-dist/js/*"></script> 
 
     <!--- CSS personalizado para el body --->
     <link rel="stylesheet" href="css/interfaz.css"> 
